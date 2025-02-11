@@ -4,7 +4,7 @@ import Landing from './pages/Landing.jsx'
 import Signin from './pages/Signin.jsx'
 import Signup from './pages/Signup.jsx'
 import ResetPassword from "./pages/ResetPassword.jsx";
-import Application from './pages/Landing.jsx'
+import Application from './pages/Application.jsx'
 
 function App() {
 

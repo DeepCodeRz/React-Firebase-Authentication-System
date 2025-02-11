@@ -80,7 +80,7 @@ export default function ApplicationPage() {
                             </linearGradient>
                         </defs>
                     </svg>
-                    Flowbite
+                    Boardly
                 </a>
                 <p className="my-6 text-gray-500 dark:text-gray-400">Open-source library of over 400+ web components and
                     interactive elements built for better web.</p>
@@ -108,7 +108,7 @@ export default function ApplicationPage() {
                     </li>
                 </ul>
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2021-2022 <a href="#"
-                                                                                                         className="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+                                                                                                         className="hover:underline">Boardly</a>. All Rights Reserved.</span>
             </div>
         </footer>
     )

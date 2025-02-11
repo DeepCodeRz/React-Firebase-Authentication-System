@@ -10,16 +10,16 @@ import Footer from '../components/Footer.jsx';
 export default function Landing() {
     return (
         <div className="w-screen flex flex-col justify-center items-center">
-            <div className="w-full" id="product">
+            <div className="w-full" id="home">
                 <Header/>
             </div>
-            <div id="product">
+            <div id="home">
                 <Hero/>
             </div>
             <div id="feautres">
                 <Feature/>
             </div>
-            <div id="cta">
+            <div id="product">
                 <Cta/>
             </div>
             <div id="contact">

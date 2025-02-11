@@ -1,15 +1,22 @@
 import {Link} from "react-router";
-import googleLogo from "../assets/googleLogo.png";
+import GoogleSignInButton from "../services/api/auth/SigninWithGoogle.jsx";
+import SigninWithPasswordButton from "../services/api/auth/SigninWithPassword.jsx";
+import {useState} from "react";
+import {Toaster} from "sonner";
 
 export default function Signin() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
+            <Toaster richColors  />
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
                          alt="logo"/>
-                    Flowbite
-                </a>
+                    Boardly
+                </Link>
                 <div
                     className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -23,13 +30,18 @@ export default function Signin() {
                                     email</label>
                                 <input type="email" name="email" id="email"
                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       placeholder="name@company.com" required=""/>
+                                       placeholder="name@company.com"
+                                       value={email}
+                                       onChange={(e) => setEmail(e.target.value)}
+                                       required=""/>
                             </div>
                             <div>
                                 <label htmlFor="password"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
                                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       value={password}
+                                       onChange={(e) => setPassword(e.target.value)}
                                        required=""/>
                             </div>
                             <div className="flex items-center justify-between">
@@ -48,10 +60,7 @@ export default function Signin() {
                                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
                                     password?</a>
                             </div>
-                            <button type="submit"
-                                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign
-                                in
-                            </button>
+                            <SigninWithPasswordButton email={email} password={password} />
 
                             <div className="mt-4 mb-8 flex justify-center items-center w-full">
                                 <hr className="w-full border-t border-gray-300"/>
@@ -59,14 +68,7 @@ export default function Signin() {
                             </div>
 
                             <div className="w-full flex items-center justify-center">
-                                <button
-                                    className="flex gap-4 items-center px-4 py-4 border border-gray-300 rounded-lg hover:bg-gray-200 transition-all ease">
-                                    <img
-                                        src={googleLogo}
-                                        alt="Google Logo"
-                                        className="size-5"
-                                    />
-                                    <span className="text-sm font-medium">Signin with Google</span></button>
+                                <GoogleSignInButton />
                             </div>
 
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
