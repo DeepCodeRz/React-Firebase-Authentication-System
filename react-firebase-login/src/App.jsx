@@ -5,11 +5,13 @@ import Signin from './pages/Signin.jsx'
 import Signup from './pages/Signup.jsx'
 import ResetPassword from "./pages/ResetPassword.jsx";
 import Application from './pages/Application.jsx'
+import {Toaster} from "sonner";
 
 function App() {
 
   return (
     <>
+        <Toaster richColors position="top-right" />
         <Router>
             <Routes>
               <Route path="/" element={<Landing />} />

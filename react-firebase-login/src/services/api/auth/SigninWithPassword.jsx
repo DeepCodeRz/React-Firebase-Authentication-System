@@ -1,14 +1,19 @@
 import { auth } from '../firebaseConfig.js';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, setPersistence, browserLocalPersistence, browserSessionPersistence } from "firebase/auth";
 import { useNavigate } from 'react-router';
 import { Toaster, toast } from 'sonner'
 import { getErrorMessage } from '../../../utils/firebaseErrors';
 
-export default function SigninWithPasswordButton({ email, password }) {
+export default function SigninWithPasswordButton({ email, password, rememberMe }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        signInWithEmailAndPassword(auth, email, password)
+        const persistenceType = rememberMe ? browserLocalPersistence : browserSessionPersistence;
+
+        setPersistence(auth, persistenceType)
+            .then(() => {
+                return signInWithEmailAndPassword(auth, email, password);
+            })
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;

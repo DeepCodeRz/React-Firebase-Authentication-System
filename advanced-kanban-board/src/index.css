@@ -1,6 +1,0 @@
-@import "../node_modules/tailwindcss";
-@config "../tailwind.config.js";
-
-html {
-    scroll-behavior: smooth;
-}

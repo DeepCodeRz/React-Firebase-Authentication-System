@@ -1,27 +1,27 @@
 import {Link} from "react-router";
 import GoogleSignInButton from "../services/api/auth/SigninWithGoogle.jsx";
 import SigninWithPasswordButton from "../services/api/auth/SigninWithPassword.jsx";
-import {useState} from "react";
-import {Toaster} from "sonner";
+import React, {useState} from "react";
+import reactLogo from "../assets/reactLogo.png";
+import firebaseLogo from "../assets/firebaseLogo.png";
 
 export default function Signin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
-            <Toaster richColors  />
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-                         alt="logo"/>
-                    Boardly
+                <Link to="/"
+                      className="flex-col gap-2 items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+
                 </Link>
                 <div
                     className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            Sign in to your account
+                        Sign in to your account
                         </h1>
                         <form className="space-y-4 md:space-y-6" action="#">
                             <div>
@@ -49,6 +49,7 @@ export default function Signin() {
                                     <div className="flex items-center h-5">
                                         <input id="remember" aria-describedby="remember" type="checkbox"
                                                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                               onChange={(e) => setRememberMe(e.target.checked)}
                                                required=""/>
                                     </div>
                                     <div className="ml-3 text-sm">
