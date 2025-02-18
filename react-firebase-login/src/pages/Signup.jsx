@@ -1,20 +1,22 @@
 import {Link} from "react-router";
-import CreateAccountWithPasswordButton from "../services/api/auth/CreateAccountWithPassword";
-import {useState} from "react";
+import CreateAccountWithPasswordButton from "../services/api/auth/CreateAccountWithPasswordButton.jsx";
+import React, {useState} from "react";
 import {Toaster} from "sonner";
 
 export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [isTermsAccepted, setIsTermsAccepted] = useState(false)
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <Link to="/" href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-                         alt="logo"/>
-                    Boardly
+                <Link
+                    to="/"
+                    className="flex-col gap-2 items-start mb-6 text-sm font-semibold text-gray-900 dark:text-white"
+                >
+                    <i className="ri-arrow-left-line"></i> Home
                 </Link>
                 <div
                     className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -58,6 +60,7 @@ export default function Signup() {
                                 <div className="flex items-center h-5">
                                     <input id="terms" aria-describedby="terms" type="checkbox"
                                            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                           onChange={() => setIsTermsAccepted(prevState => !prevState)}
                                            required=""/>
                                 </div>
                                 <div className="ml-3 text-sm">
@@ -67,7 +70,7 @@ export default function Signup() {
                                             href="#">Terms and Conditions</a></label>
                                 </div>
                             </div>
-                            <CreateAccountWithPasswordButton email={email} password={password} confirmPassword={confirmPassword} />
+                            <CreateAccountWithPasswordButton email={email} password={password} confirmPassword={confirmPassword} isTermsAccepted={isTermsAccepted}/>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Already have an account? <Link to="/signin"
                                                             className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login

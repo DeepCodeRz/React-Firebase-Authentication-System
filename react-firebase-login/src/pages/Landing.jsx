@@ -17,7 +17,10 @@ export default function Landing() {
                     </div>
                     <h1 className="text-4xl mb-4 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">React
                         / Firebase Authentication System</h1>
-                    <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">This
+                    <span className="text-xs ">
+                        Designed with Flowbite design system.
+                    </span>
+                    <p className="mb-8 mt-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">This
                         is an authentication system that includes email/password login and register, Google login, and
                         resetting password with email confirmation.</p>
                     <div

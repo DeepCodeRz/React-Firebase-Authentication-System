@@ -4,12 +4,19 @@ import { useNavigate } from 'react-router';
 import { Toaster, toast } from 'sonner'
 import { getErrorMessage } from '../../../utils/firebaseErrors';
 
-export default function CreateAccountWithPasswordButton({ email, password, confirmPassword }) {
+export default function CreateAccountWithPasswordButton({ email, password, confirmPassword , isTermsAccepted}) {
     const navigate = useNavigate();
 
     const handleClick = () => {
         if (password !== confirmPassword) {
             toast.error("Passwords do not match");
+            return;
+        }
+
+        console.log(isTermsAccepted)
+
+        if (!isTermsAccepted) {
+            toast.error("You need to accept Terms and Conditions.");
             return;
         }
 
