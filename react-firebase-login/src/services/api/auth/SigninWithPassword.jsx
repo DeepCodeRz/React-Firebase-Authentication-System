@@ -17,6 +17,11 @@ export default function SigninWithPasswordButton({ email, password, rememberMe }
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
+                if (!user.emailVerified) {
+                    auth.signOut();
+                    alert("Please verify your email before signing in.");
+                    navigate(".");
+                }
                 navigate("/application");
             })
             .catch((error) => {

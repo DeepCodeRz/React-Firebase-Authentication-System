@@ -1,10 +1,10 @@
 import { auth } from '../firebaseConfig.js';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth"; // sendEmailVerification modüler olarak import edildi
 import { useNavigate } from 'react-router';
 import { Toaster, toast } from 'sonner'
 import { getErrorMessage } from '../../../utils/firebaseErrors';
 
-export default function CreateAccountWithPasswordButton({ email, password, confirmPassword , isTermsAccepted}) {
+export default function CreateAccountWithPasswordButton({ email, password, confirmPassword, isTermsAccepted }) {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -24,6 +24,15 @@ export default function CreateAccountWithPasswordButton({ email, password, confi
             .then((userCredential) => {
                 // Signed up
                 const user = userCredential.user;
+                
+                sendEmailVerification(user)
+                    .then(() => {
+                        alert("Verification mail sent.");
+                    })
+                    .catch(error => {
+                        console.error("Couldn't send verification mail: ", error);
+                    });
+
                 navigate("/signin");
             })
             .catch((error) => {
